@@ -1,4 +1,4 @@
-# Smart Bot (JARVIS Inspired)- Using python
+# Smart Bot (JARVIS Inspired)- `Using python`
 
 Just like most of us, I started this project with inspiration from the Jarvis assistant in the classic classic iron man movies. I found this awesome API (Jarvis API linked below) and I was able to use this as a base for my Jarvis bot.
  
