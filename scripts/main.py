@@ -9,6 +9,7 @@ import pytz
 from restcountries import RestCountryApiV2 as rapi
 import requests
 import json
+import wikipedia
 
 warnings.filterwarnings("ignore")
 warnings.warn("second example of warning!")
@@ -61,7 +62,7 @@ def start():
         query = input('Enter your command:')
         query = query.upper()
 
-        if re.search("COVID|CORONA|COVID 19|COVID NINETEEN|COVID19|COVID-19|CIVUD|CORONA VIRUS|MANY CASES IN", query):
+        if re.search("MANY CASES IN|MANY DEATHS IN|RECOVERIES|DIED OF|DEATHS", query) and re.search("COVUD|COVID|CORONA|COVID 19|COVID NINETEEN|COVID19|COVID-19|CIVUD|CORONA VIRUS|COVID -19| COVID - 19", query) :
             country = country_check(query)
             if country is None:
                 world_covid_stats_url = 'https://corona.lmao.ninja/v3/covid-19/all'
@@ -84,6 +85,10 @@ def start():
                     speak(
                         f'Totals For \n Cases Today in {country} are: {results["todayCases"]}\n , Deaths are: {results["todayDeaths"]}\n and Recoveries Today are: {results["todayRecovered"]}\n')
 
+        if re.search("SYMPTOM|SYMPTOMS|SIDE EFFECT,SIDE EFFECTS", query) and re.search("COVUD|COVID|CORONA|COVID 19|COVID NINETEEN|COVID19|COVID-19|CIVUD|CORONA VIRUS|COVID -19| COVID - 19", query):
+            symptoms = wikipedia.summary('symptoms of covid', sentences=3)
+            print(symptoms)
+            speak(symptoms)
         if re.search("JOKE|JOKES", query):
             joke_ = obj.tell_me_joke('en', 'neutral')
             speak('here is a joke')
